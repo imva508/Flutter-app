@@ -17,7 +17,8 @@ class LoginPage extends StatefulWidget {
   State<StatefulWidget> createState() => LoginPageState();
 }
 
-class LoginPageState extends State<LoginPage> with SingleTickerProviderStateMixin {
+class LoginPageState extends State<LoginPage>
+    with SingleTickerProviderStateMixin {
   AnimationController _iconAnimationController;
   Animation<double> _iconAnimation;
 
@@ -55,8 +56,36 @@ class LoginPageState extends State<LoginPage> with SingleTickerProviderStateMixi
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               FlutterLogo(
-                size: _iconAnimation.value*100,
+                size: _iconAnimation.value * 100,
               ),
+              Form(
+                child: Theme(
+                  data: ThemeData(
+                    primarySwatch: Colors.teal,
+                    brightness: Brightness.dark,
+                    inputDecorationTheme: InputDecorationTheme(
+                      labelStyle: TextStyle(fontSize: 16, color: Colors.white),
+                    ),
+                  ),
+                  child: Container(
+                    padding: EdgeInsets.all(16),
+                    child: Column(
+                      children: <Widget>[
+                        TextFormField(
+                          decoration:
+                              InputDecoration(hintText: "Email address"),
+                          keyboardType: TextInputType.emailAddress,
+                        ),
+                        TextFormField(
+                          decoration: InputDecoration(hintText: "Password"),
+                          keyboardType: TextInputType.text,
+                          obscureText: true,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              )
             ],
           )
         ],
